@@ -53,7 +53,16 @@ body {
   text-align: center;
   color: white;
   background: none;
-  transition: all linear .1s;
+  transition: all linear .2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.keys-item img {
+  position: absolute;
+  left: -100%;
+  bottom: -100%;
+  z-index: 1;
 }
 
 kdb {
@@ -61,6 +70,8 @@ kdb {
   display: block;
   font-weight: bold;
   font-size: 18px;
+  position: relative;
+  z-index: 2;
 }
 
 .sound {
@@ -69,9 +80,45 @@ kdb {
   display: block;
   font-size: 12px;
   padding-top: .5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .playing {
   border-color: white;
   transform: scale(1.1);
+}
+
+.keys-item.playing img {
+  position: absolute;
+  left: 1px;
+  bottom: -20px;
+  z-index: 1;
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transform: rotate(8dg);
+  opacity: 0.5;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+    transform: rotate(8deg);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+    transform: rotate(-8deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+    transform: rotate(8deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+    transform: rotate(-8deg);
+  }
 }
